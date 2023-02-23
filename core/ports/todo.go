@@ -3,7 +3,7 @@ package ports
 import "github.com/matyv3/hexagonal-go-sst/core/domain"
 
 type TODOService interface {
-	CreateTODO(domain.TODO) error
+	CreateTODO(domain.TODO) (domain.TODO, error)
 	GetTODOs() ([]domain.TODO, error)
 }
 

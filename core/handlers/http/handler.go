@@ -24,12 +24,12 @@ func (c HTTPController) CreateTODO(ctx echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, "There is an error with the body format").SetInternal(err)
 	}
 
-	err := c.service.CreateTODO(*todo)
+	result, err := c.service.CreateTODO(*todo)
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest).SetInternal(err)
 	}
 
-	return ctx.JSON(201, todo)
+	return ctx.JSON(201, result)
 }
 
 func (c HTTPController) GetTODOs(ctx echo.Context) error {

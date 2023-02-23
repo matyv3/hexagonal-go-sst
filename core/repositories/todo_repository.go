@@ -5,7 +5,13 @@ import (
 	"github.com/matyv3/hexagonal-go-sst/core/ports"
 )
 
-var todos []domain.TODO
+var todos []domain.TODO = []domain.TODO{
+	{
+		Title:       "first todo",
+		Description: "description",
+		Status:      "done",
+	},
+}
 
 type TODORepository struct{}
 

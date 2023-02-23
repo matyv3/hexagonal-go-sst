@@ -15,12 +15,13 @@ func CreateTODOService(repository ports.TODORepository) ports.TODOService {
 	}
 }
 
-func (s TODOService) CreateTODO(todo domain.TODO) error {
+func (s TODOService) CreateTODO(todo domain.TODO) (domain.TODO, error) {
+	todo.Status = "pending"
 	err := s.repository.CreateTODO(todo)
 	if err != nil {
-		return err
+		return domain.TODO{}, err
 	}
-	return nil
+	return todo, nil
 }
 
 func (s TODOService) GetTODOs() ([]domain.TODO, error) {
